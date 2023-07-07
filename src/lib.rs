@@ -27,8 +27,8 @@ pub extern "stdcall" fn DllMain(hinstDLL: isize, dwReason: u32, lpReserved: *mut
     }
 }
 
-unsafe fn init(hinstDLL: isize) {
-    let mut buffer = [0u8; MAX_PATH as usize + 1];
+unsafe fn init(hinstDLL: isize) -> String {
+    let mut buffer = [0u8; MAX_PATH + 1];
     let name_size = GetModuleFileNameA(
         HMODULE(hinstDLL),
         &mut buffer
@@ -38,4 +38,6 @@ unsafe fn init(hinstDLL: isize) {
     if name_str.to_lowercase().ends_with("dinput8.dll") {
         init_dinput8();
     }
+
+    name_str.to_string()
 }
