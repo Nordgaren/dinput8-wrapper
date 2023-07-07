@@ -6,6 +6,8 @@ mod util;
 use crate::dinput8::init_dinput8;
 use std::mem::size_of;
 use windows::Win32::Foundation::{HMODULE, MAX_PATH};
+#[cfg(feature = "Console")]
+use windows::Win32::System::Console::{AllocConsole, AttachConsole};
 use windows::Win32::System::LibraryLoader::GetModuleFileNameA;
 
 #[no_mangle]
@@ -16,7 +18,7 @@ pub extern "stdcall" fn DllMain(hinstDLL: isize, dwReason: u32, lpReserved: *mut
             #[cfg(feature = "Console")]
             {
                 AllocConsole();
-                AttachConsole(DWORD::MAX);
+                AttachConsole(u32::MAX);
             }
             init(hinstDLL);
             1
