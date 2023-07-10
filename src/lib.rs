@@ -28,7 +28,7 @@ pub extern "stdcall" fn DllMain(hinstDLL: isize, dwReason: u32, lpReserved: *mut
 }
 
 unsafe fn init(hinstDLL: isize) -> String {
-    let mut buffer = [0u8; MAX_PATH + 1];
+    let mut buffer = [0u8; MAX_PATH as usize + 1];
     let name_size = GetModuleFileNameA(
         HMODULE(hinstDLL),
         &mut buffer
