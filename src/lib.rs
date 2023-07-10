@@ -9,6 +9,7 @@ use windows::Win32::Foundation::{HMODULE, MAX_PATH};
 #[cfg(feature = "Console")]
 use windows::Win32::System::Console::{AllocConsole, AttachConsole};
 use windows::Win32::System::LibraryLoader::GetModuleFileNameA;
+use windows::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
 
 #[no_mangle]
 #[allow(unused)]
