@@ -33,6 +33,7 @@ use windows::imp::GetProcAddress;
 use crate::path_processor::{FILES, save_dump};
 
 static mut DIR: String = String::new();
+use windows::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
 
 #[no_mangle]
 #[allow(unused)]
