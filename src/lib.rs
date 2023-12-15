@@ -15,7 +15,7 @@ extern "system" {
 
 #[no_mangle]
 #[allow(unused)]
-pub extern "stdcall" fn DllMain(hinstDLL: isize, dwReason: u32, lpReserved: *mut usize) -> i32 {
+pub extern "stdcall" fn DllMain(hinstDLL: usize, dwReason: u32, lpReserved: *mut usize) -> i32 {
     match dwReason {
         DLL_PROCESS_ATTACH => unsafe {
             #[cfg(feature = "Console")]
